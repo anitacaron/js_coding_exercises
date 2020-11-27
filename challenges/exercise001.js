@@ -1,6 +1,7 @@
 function capitalize(word) {
   if (word === undefined) throw new Error("word is required");
-  // Add your code here!
+  //return word.charAt(0).toUpperCase() + word.slice(1);
+  return word.substring(0,1).toUpperCase() + word.substring(1, word.length)
 }
 
 function generateInitials(firstName, lastName) {
