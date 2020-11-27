@@ -24,7 +24,9 @@ function getSalePrice(originalPrice, reduction) {
 
 function getMiddleCharacter(str) {
   if (str === undefined) throw new Error("str is required");
-  // Add your code here!
+  console.log(str.length)
+  if (str.length % 2 == 0) return str.substring(Math.floor(str.length/2)-1,Math.floor(str.length/2) + 1)
+  else return str.charAt(Math.floor(str.length/2))
 }
 
 function reverseWord(word) {
