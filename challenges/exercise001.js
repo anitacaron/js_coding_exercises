@@ -44,7 +44,7 @@ function reverseAllWords(words) {
 
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
-  count = 0;
+  let count = 0;
   for (var i = 0; i < users.length; i++) {
     if (users[i].type == "Linux") count += 1;
   }
@@ -60,7 +60,7 @@ function getMeanScore(scores) {
     return accumulator + currentValue;
   });
 
-  mean = sum/scores.length;
+  let mean = sum/scores.length;
 
   if (!Number.isInteger(mean)) return Number.parseFloat(mean.toFixed(2));
   else return mean;
