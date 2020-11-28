@@ -39,22 +39,32 @@ function reverseAllWords(words) {
     let word = words[i];
     words[i] = word.split("").reverse().join("");
   }
-  return words
+  return words;
 }
 
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
-  count = 0
+  count = 0;
   for (var i = 0; i < users.length; i++) {
-    if (users[i].type == "Linux") count += 1
+    if (users[i].type == "Linux") count += 1;
   }
 
-  return count
+  return count;
 }
 
 function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
-  // Add your code here!
+
+  const sum = scores.reduce((accumulator, currentValue) =>
+  {
+    return accumulator + currentValue;
+  });
+
+  mean = sum/scores.length;
+
+  if (!Number.isInteger(mean)) return Number.parseFloat(mean.toFixed(2));
+  else return mean;
+
 }
 
 function simpleFizzBuzz(n) {
