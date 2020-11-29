@@ -2,9 +2,7 @@ function findSmallNums(nums) {
   if (!nums) throw new Error("nums is required");
   const smallNums = nums.filter(function(item) {
     return item < 1;
-
   });
-
   return smallNums;
 }
 
