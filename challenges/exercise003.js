@@ -1,28 +1,53 @@
 function getSquares(nums) {
   if (nums === undefined) throw new Error("nums is required");
-  // Your code here!
+ 
+  const squares = nums.map(number => {
+    return Math.pow(number,2);
+  });
+
+  return squares;
+
 }
 
 function camelCaseWords(words) {
+  let camelCase = words[0];
   if (words === undefined) throw new Error("words is required");
-  // Your code here!
+  for (var i = 1; i < words.length; i++) {
+    let word = words[i];
+    camelCase += word.substring(0,1).toUpperCase() + word.substring(1, word.length);
+  }
+  return camelCase;
 }
 
 function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
-  // Your code here!
+  let count_subjects = 0;
+  for (var i = 0; i < people.length; i++) {
+     count_subjects += people[i].subjects.length;
+   }
+   return count_subjects; 
 }
 
 function checkIngredients(menu, ingredient) {
   if (menu === undefined) throw new Error("menu is required");
   if (!ingredient) throw new Error("ingredient is required");
-  // Your code here!
+  for (var i = 0; i < menu.length; i++) {
+    let list_ingredients = menu[i].ingredients;
+    if (list_ingredients.includes(ingredient))
+      return true;
+  }
+
+  return false;
 }
 
 function duplicateNumbers(arr1, arr2) {
   if (arr1 === undefined) throw new Error("arr1 is required");
   if (arr2 === undefined) throw new Error("arr2 is required");
-  // Your code here!
+  var arr_duplicates = arr1.filter(function(val) {
+    return arr2.indexOf(val) != -1;
+  });
+
+  return [...new Set(arr_duplicates.sort())];
 }
 
 module.exports = {
