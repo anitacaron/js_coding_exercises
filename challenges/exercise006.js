@@ -6,6 +6,16 @@
  */
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
+  let sum_numbers = 0;
+
+  arr.forEach(number => {
+    if (number % 3 == 0 || number % 5 == 0) {
+      sum_numbers += number
+    }
+  });
+  
+
+  return sum_numbers;
 };
 
 /**
@@ -15,6 +25,9 @@ const sumMultiples = arr => {
  */
 const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
+  const dna_list = str.split("");
+  const dna = ['C', 'G', 'T', 'A'];
+  return dna.every(i => dna_list.includes(i));
 };
 
 /**
@@ -66,6 +79,17 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
+  if (staff.length === 0) return false;
+
+  let count_staff = 0;
+  staff.forEach(member => {
+    if (member.rota.includes(day)) count_staff++;
+  });
+
+  if (count_staff >= 3)
+    return true;
+  else
+    return false;
 };
 
 module.exports = {

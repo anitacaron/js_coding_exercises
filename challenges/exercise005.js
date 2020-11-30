@@ -11,7 +11,7 @@ const count1sand0s = str => {
   if (str === undefined) throw new Error("str is required");
   const freq_1_0 = {1: 0, 0: 0};
   
-  for (var i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i++) {
     const num = str[i];
     freq_1_0[num] += 1;
   }
@@ -64,7 +64,7 @@ const getWordFrequencies = str => {
   if (str === undefined) throw new Error("str is required");
   const freq = {};
   const list_words = str.split(' ')
-  for (var i = 0; i < list_words.length; i++) {
+  for (let i = 0; i < list_words.length; i++) {
     const word = list_words[i].toLowerCase().replace(/[,!?]/g,"");
     if (freq[word] === undefined) {
       freq[word] = 1;
