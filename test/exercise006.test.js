@@ -29,7 +29,7 @@ describe("isValidDNA", () => {
     expect(isValidDNA("GGACACCTC")).toBe(true);
   });
 
-  test("if there the string is empty, returns false", () => {
+  test("if the string is empty, returns false", () => {
     expect(isValidDNA("")).toBe(false);
   });
 
@@ -38,9 +38,59 @@ describe("isValidDNA", () => {
   });
 });
 
+describe("getComplementaryDNA", () => {
+  // I put the same tests from the function isValidDNA because they are related
+  test("returns complementary DNA if there are the characters 'C', 'G', 'T', 'A'", () => {
+    expect(getComplementaryDNA("TATGGGTCTTCG")).toBe("ATACCCAGAAGC");
+    expect(getComplementaryDNA("GGACACCTC")).toBe("CCTGTGGAG");
+  });
+
+  test("if the string is empty, returns empty^string", () => {
+    expect(getComplementaryDNA("")).toBe("");
+  });
+
+  test("if there is only one of the characters, return empty string", () => {
+    expect(getComplementaryDNA("C")).toBe("");
+  });
+});
+
+describe("isItPrime", () => {
+  test("returns true for a prime number", () => {
+    expect(isItPrime(1)).toBe(true); 
+    expect(isItPrime(2)).toBe(true);
+    expect(isItPrime(3)).toBe(true);
+    expect(isItPrime(5)).toBe(true);
+    expect(isItPrime(7)).toBe(true);
+    expect(isItPrime(101)).toBe(true);
+  });
+
+  test("returns false for a not prime number", () => {
+    expect(isItPrime(0)).toBe(false);
+    expect(isItPrime(4)).toBe(false);
+    expect(isItPrime(6)).toBe(false);
+    expect(isItPrime(8)).toBe(false);
+  });
+
+  test("return null when n is not a integer", () => {
+    expect(isItPrime(1.3)).toBe(null)
+  });
+
+  test("return null when n is not > 0", () => {
+    expect(isItPrime(-1)).toBe(null)
+  });
+});
+
 describe("createMatrix", () => {
-  test("returns a matrix of 1 * 1 when passed 1", () => {
-    expect(createMatrix(1,"foo")).toEqual([ ["foo"] ]) 
+  test("returns a matrix of 1 * 1 when passed 1, foo as dimension and filler", () => {
+    expect(createMatrix(1,"foo")).toEqual([ ["foo"] ]); 
+  });
+
+  test("returns a matrix of 3 * 3 when passed 3, foo as dimension and filler", () => {
+    expect(createMatrix(3,"foo")).toEqual([ ["foo", "foo", "foo"], ["foo", "foo", "foo"], ["foo", "foo", "foo"] ]);
+  });
+
+  test("return null when dimension n <= 0", () => {
+    expect(createMatrix(-1,"foo")).toBe(null)
   });
 });
 
