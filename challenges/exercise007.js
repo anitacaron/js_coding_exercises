@@ -4,6 +4,14 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
+  if (!Number.isInteger(n)) return null;
+
+  const nToString = n.toString();
+  let sum = 0;
+  for (let i = 0; i < nToString.length; i++) {
+    sum += parseInt(nToString[i]);
+  }
+  return sum;
 };
 
 /**
@@ -17,6 +25,15 @@ const sumDigits = n => {
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
+  if (!Number.isInteger(start)) throw new Error("start should be an integer");
+  if (!Number.isInteger(end)) throw new Error("end should be an integer");
+
+  const range = [];
+  for (var i = start; i <= end ; i+=step) {
+    range.push(i);
+  }
+
+  return range;
 };
 
 /**
@@ -51,6 +68,23 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+
+  const maxTimeUsers = [];
+
+  users.forEach(user => {
+    user.screenTime.forEach(screenTime => {
+      if (screenTime.date === date) {
+        let sumScreenTimeUser = 0;
+        for (let key in screenTime.usage) {
+          sumScreenTimeUser += screenTime.usage[key];
+        }
+        if (sumScreenTimeUser >= 100) {
+          maxTimeUsers.push(user.username)
+        }
+      }
+    });
+  });
+  return maxTimeUsers;
 };
 
 /**
@@ -65,6 +99,16 @@ const getScreentimeAlertList = (users, date) => {
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
+  if (hexStr.length <= 6 && hexStr.length > 7) throw new Error("hexStr should be length 7");
+
+  const hexStrNew = hexStr.substring(1,hexStr.length);
+  let rgb = "rgb(";
+  for (let i = 0; i < hexStrNew.length; i+=2) {
+    rgb += parseInt(hexStrNew.substring(i,i+2), 16) + ",";
+    
+  }
+
+  return rgb.substring(0,rgb.length-1) + ")";
 };
 
 /**
