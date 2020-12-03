@@ -102,14 +102,16 @@ const hexToRGB = hexStr => {
   if (hexStr.length <= 6 && hexStr.length > 7) throw new Error("hexStr should be length 7");
 
   const hexStrNew = hexStr.substring(1,hexStr.length);
-  let rgb = "rgb(";
+  let rgb = [];
   for (let i = 0; i < hexStrNew.length; i+=2) {
-    rgb += parseInt(hexStrNew.substring(i,i+2), 16) + ",";
+    rgb.push(parseInt(hexStrNew.substring(i,i+2), 16));
     
   }
 
-  return rgb.substring(0,rgb.length-1) + ")";
-};
+  const [part1,part2,part3] = rgb;
+
+  return `rgb(${part1},${part2},${part3})`;
+}; 
 
 /**
  * This function takes a noughts and crosses board represented as an array, where an empty space is represented with null.
@@ -123,6 +125,41 @@ const hexToRGB = hexStr => {
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
+
+  const isX = (currentValue) => currentValue === "X";
+  const is0 = (currentValue) => currentValue === "0";
+  
+  // verify horizontal
+  for (let i = 0; i < board.length; i++) {
+    if (board[i].every(isX)) {
+      return "X";
+    }
+    if (board[i].every(is0)) {
+      return "0";
+    }   
+  }
+
+  // verify diagonal
+  const diagonal = board.map((row, r) => board[r][r]);
+  if (diagonal.every(isX)) {
+    return "X";
+  }
+  if (diagonal.every(is0)) {
+    return "0";
+  }   
+
+  // verify vertical
+  const btranspose = board.map((col, i) => board.map(row => row[i]));
+  for (let i = 0; i < btranspose.length; i++) {
+    if (btranspose[i].every(isX)) {
+      return "X";
+    }
+    if (btranspose[i].every(is0)) {
+      return "0";
+    }   
+  }
+
+  return null;
 };
 
 module.exports = {
