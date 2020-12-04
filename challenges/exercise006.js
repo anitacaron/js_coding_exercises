@@ -6,16 +6,13 @@
  */
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
-  let sum_numbers = 0;
+  let sumNumbers = 0;
 
   arr.forEach(number => {
-    if (number % 3 === 0 || number % 5 === 0) {
-      sum_numbers += number
-    }
+    if (number % 3 === 0 || number % 5 === 0) sumNumbers += number;
   });
   
-
-  return sum_numbers;
+  return sumNumbers;
 };
 
 /**
@@ -25,9 +22,9 @@ const sumMultiples = arr => {
  */
 const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
-  const dna_list = str.split("");
+  const dnaList = [ ...str ];
   const dna = ['C', 'G', 'T', 'A'];
-  return dna.every(i => dna_list.includes(i));
+  return dna.every(i => dnaList.includes(i));
 };
 
 /**

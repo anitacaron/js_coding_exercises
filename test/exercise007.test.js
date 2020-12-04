@@ -29,26 +29,28 @@ describe("createRange", () => {
 describe("getScreentimeAlertList", () => {
 	test("return user that has screen time > 100", () => {
 		const users = [
-		   {
-		     username: "beth_1234",
-		     name: "Beth Smith",
-		     screenTime: [
-		                  { date: "2019-05-01", usage: { twitter: 34, instagram: 22, facebook: 40} },
-		                  { date: "2019-05-02", usage: { twitter: 56, instagram: 40, facebook: 31} },
-		                  { date: "2019-05-03", usage: { twitter: 12, instagram: 15, facebook: 19} },
-		                  { date: "2019-05-04", usage: { twitter: 10, instagram: 56, facebook: 61} },
-		                 ]
+			{
+				username: "beth_1234",
+				name: "Beth Smith",
+				screenTime:
+		    	[
+		    	{ date: "2019-05-01", usage: { twitter: 34, instagram: 22, facebook: 40} },
+		        { date: "2019-05-02", usage: { twitter: 56, instagram: 40, facebook: 31} },
+		        { date: "2019-05-03", usage: { twitter: 12, instagram: 15, facebook: 19} },
+		        { date: "2019-05-04", usage: { twitter: 10, instagram: 56, facebook: 61} },
+		    	]
 		    },
 		    {
-		     username: "sam_j_1989",
-		     name: "Sam Jones",
-		     screenTime: [
-		                  { date: "2019-06-11", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 10} },
-		                  { date: "2019-06-13", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 16} },
-		                  { date: "2019-06-14", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 31} },
-		                 ]
+		    	username: "sam_j_1989",
+		    	name: "Sam Jones",
+		    	screenTime: 
+		     	[
+		    	{ date: "2019-06-11", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 10} },
+		    	{ date: "2019-06-13", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 16} },
+		    	{ date: "2019-06-14", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 31} },
+		    	]
 		    },
-		]
+	    ]
 		expect(getScreentimeAlertList(users, "2019-05-04")).toEqual(["beth_1234"]);
 	});
 });
@@ -62,21 +64,21 @@ describe("hexToRGB", () => {
 describe("findWinner", () => {
 	test("returns the winner of a TicTacToe game", () => {
 		const board1 = [
-		    ["X", "0", "0"],
-		    ["X", null, null],
-		    ["X", null, "0"]], 
+			["X", "0", "0"],
+			["X", null, null],
+			["X", null, "0"]], 
 		board2 = [
-		    ["0", "0", "0"],
-		    ["0", null, null],
-		    ["X", null, "0"]],
+			["0", "0", "0"],
+			["0", null, null],
+			["X", null, "0"]],
 		board3 = [
-		    ["0", "X", null],
-		    ["X", "0", null],
-		    ["X", null, "0"]],
+			["0", "X", null],
+			["X", "0", null],
+			["X", null, "0"]],
 		board4 = [
-		    ["0", "X", "0"],
-		    ["0", "0", "X"],
-		    ["X", "0", "X"]]		
+			["0", "X", "0"],
+			["0", "0", "X"],
+			["X", "0", "X"]]		
 		expect(findWinner(board1)).toBe("X");
 		expect(findWinner(board2)).toBe("0");
 		expect(findWinner(board3)).toBe("0");

@@ -35,19 +35,18 @@ function reverseWord(word) {
 
 function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
-  for (let i = 0; i < words.length; i++) {
-    let word = words[i];
-    words[i] = word.split("").reverse().join("");
-  }
+  words.forEach((word, index) => words[index] = word.split("").reverse().join(""));
+
   return words;
 }
 
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
   let count = 0;
-  for (let i = 0; i < users.length; i++) {
-    if (users[i].type == "Linux") count += 1;
-  }
+
+  users.forEach(user => {
+    if (user.type == "Linux") count += 1;
+  });
 
   return count;
 }
